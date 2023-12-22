@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Animate in loop</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie_svg.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="dialog-gray-mark" :class="{'fade-enter-mark':isShowDialogMark, 'fade-leave-mark':!isShowDialogMark}" v-show="isShowDialogMark" @click="hideDialog()"></div>
+        <div class="dialog-box">
+            <div class="dialog-header">
+                <div class="center-cont">
+                    <div class="title">Reverse animation on second click</div>
+                </div>
+            </div>
+            <div class="demo-wrap">
+                <span class="icon" id="lottie-demo"></span>
+                <span class="infomation">Reverse animation on second click</span>
+                <span class="desc">Made by <a href="javascript:;">MingCute.com</a></span>
+            </div>
+        </div>
+    </body>
+    <script>
+        (function() {
+            let svgContainer = document.querySelector('#lottie-demo');
+            let animItem = lottie.loadAnimation({
+                wrapper: svgContainer,
+                animType: 'svg',
+                loop: false,
+                autoplay: false,
+                path: "https://www.mingcute.com/static/lottieOther/menu_line.json"
+            });
+
+            let toggle = true;
+            let currentOp = 0;
+            let interVal;
+            let interval2;
+            
+            svgContainer.addEventListener('click', (e) => {
+                if(toggle) {
+                    console.log('xxx')
+                    toggle = false;
+                    if(interval2) {
+                        clearInterval(interval2);
+                    }
+                    interVal = setInterval(() => {
+                        if (currentOp >= 50) {
+                            
+                            clearInterval(interVal);
+                            interval = '';
+                            return;
+                        }
+                        currentOp = currentOp + 1;
+                        animItem.goToAndStop(currentOp, true);
+                        animItem.pause();
+                    }, 20);
+                } else if(!toggle) {
+                    console.log('yyy')
+                    toggle = true;
+                    if(interVal) {
+                        clearInterval(interVal);
+                    }
+                    interval2 = setInterval(() => {
+                        if (currentOp <= 0) {
+                            clearInterval(interval2);
+                            interval2 = '';
+                            return;
+                        }
+                        currentOp = currentOp - 1;
+                        animItem.goToAndStop(currentOp, true);
+                        animItem.pause();
+                    }, 20);
+                }
+            });
+            
+        })();
+    </script>
+</html>

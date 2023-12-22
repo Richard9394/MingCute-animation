@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Animate in loop</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie_svg.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="dialog-gray-mark" :class="{'fade-enter-mark':isShowDialogMark, 'fade-leave-mark':!isShowDialogMark}" v-show="isShowDialogMark" @click="hideDialog()"></div>
+        <div class="dialog-box">
+            <div class="dialog-header">
+                <div class="center-cont">
+                    <div class="title">Animate on click</div>
+                </div>
+            </div>
+            <div class="demo-wrap">
+                <span class="icon" id="lottie-demo"></span>
+                <span class="infomation">Animate an animation on each click.</br>
+                                            playSegments(segments, forceFlag)</br>
+                                            Segments: array. Can contain 2 numeric values that will be used as first and last frame of the animation. Or can contain a sequence of arrays each with 2 numeric values.</br>
+                                            ForceFlag: boolean. If set to false, it will wait until the current segment is complete. If true, it will update values immediately.</span>
+                <span class="desc">Made by <a href="javascript:;">MingCute.com</a></span>
+            </div>
+        </div>
+    </body>
+    <script>
+        (function() {
+            let svgContainer = document.querySelector('#lottie-demo');
+            let animItem = lottie.loadAnimation({
+                wrapper: svgContainer,
+                animType: 'svg',
+                loop: false,
+                autoplay: false,
+                path: "https://www.mingcute.com/static/lottieOther/menu_line.json"
+            });
+            svgContainer.addEventListener('click', function() {
+                animItem.playSegments([0,100], true);
+            });
+        })();
+    </script>
+</html>
