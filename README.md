@@ -8,7 +8,7 @@ This is a demo of MingCute animation icon.
 
 
 ## Usage : 4 ways to trigger animation
-<p>We offer four ways to trigger animation playback.</p><br>
+We offer four ways to trigger animation playback.<br>
 loop    ---------   animate_in_loop.html<br>
 click   ---------   animate_on_click.html<br>
 hover   ---------   animate_on_hover.html<br>
@@ -17,7 +17,7 @@ reverse ---------   reverse_animation_on_second_click.html
 
 
 ## Modify Color : Monochrome and Two-tone
-<p>There are 4 css classes to change colors.You can modify Hex to achieve your color.</p>
+There are 4 css classes to change colors.You can modify Hex to achieve your color.
 ```html
     <style>
         .mgc_primary_stroke {
